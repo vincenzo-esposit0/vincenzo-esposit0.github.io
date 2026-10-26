@@ -25,6 +25,7 @@
   </script>
 </head>
 <body>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <!-- Badge certificazioni (riutilizzati in Chi sono e Competenze) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -114,8 +115,14 @@
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container">
-        <p class="eyebrow reveal" data-i18n="nav.about">Chi sono</p>
-        <h2 class="section-title reveal" data-i18n="about.title">Software solido.<br>Sistemi sicuri.</h2>
+        <div class="sec-head sec-right">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.about">Chi sono</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.about">La mia storia</p>
+            <h2 class="sec-title reveal" data-i18n="nav.about">Chi sono</h2>
+          </div>
+        </div>
+        <h3 class="sec-sub reveal" data-i18n="about.title">Software solido.<br>Sistemi sicuri.</h3>
         <p class="lead reveal" data-i18n="about.lead">Ingegnere del software specializzato in cybersecurity, con esperienza nello sviluppo backend a microservizi e nel testing di sistemi distribuiti e blockchain. Oggi mi occupo di infrastrutture tecniche e formazione in cybersecurity all'Università degli Studi di Salerno.</p>
 
         <div class="bento">
@@ -164,86 +171,134 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="section section-alt" id="experience">
+    <section class="section" id="experience">
       <div class="container">
-        <p class="eyebrow reveal" data-i18n="nav.exp">Esperienza</p>
-        <h2 class="section-title reveal" data-i18n="exp.title">Percorso professionale.</h2>
-        <div class="timeline">
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d1">set 2025 — oggi</p>
-            <div class="job-body">
-              <h3><span data-i18n="about.role">Funzionario Tecnico</span><span class="now"><span class="dot"></span><span data-i18n="exp.now">Attuale</span></span></h3>
-              <p class="job-org">Università degli Studi di Salerno</p>
-              <p data-i18n="exp.t1">Gestione delle infrastrutture informatiche e robotiche del laboratorio MIVIA AIIR e supporto tecnico alla didattica e alla ricerca: ambienti di simulazione, server di calcolo e laboratori di penetration testing.</p>
-              <ul class="tags"><li>System Administration</li><li data-i18n="exp.tag.lab">Gestione laboratori</li><li>Troubleshooting</li></ul>
-            </div>
-          </article>
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d2">apr 2026 — lug 2026</p>
-            <div class="job-body">
-              <h3><span data-i18n="exp.r2">Esperto Disciplinare in Cybersecurity</span></h3>
-              <p class="job-org">Università degli Studi di Salerno</p>
-              <p data-i18n="exp.t2">Docente a contratto nell'Academy in Cybersecurity del Corso di Laurea in Ingegneria Informatica. Progettazione ed erogazione di un percorso teorico-pratico su penetration testing, ethical hacking e vulnerability assessment.</p>
-              <ul class="tags"><li>Ethical Hacking</li><li>Vulnerability Assessment</li><li data-i18n="exp.tag.teach">Docenza</li></ul>
-            </div>
-          </article>
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d3">ott 2024 — ago 2025</p>
-            <div class="job-body">
-              <h3><span>IT Consultant</span></h3>
-              <p class="job-org">Blue Reply · Milano</p>
-              <p data-i18n="exp.t3">Sviluppo backend di microservizi Java/Spring Boot per clienti del settore assicurativo. CI/CD multi-ambiente, quality gate con SonarQube e NexusIQ, test JUnit e Mockito con coverage superiore all'85%.</p>
-              <ul class="tags"><li>Java</li><li>Spring Boot</li><li data-i18n="exp.tag.micro">Microservizi</li><li>CI/CD</li></ul>
-            </div>
-          </article>
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d4">apr 2024 — ott 2024</p>
-            <div class="job-body">
-              <h3><span>QA Automation Engineer</span></h3>
-              <p class="job-org">NTT DATA Italia · Napoli</p>
-              <p data-i18n="exp.t4">Tesi magistrale sulle metodologie di testing per l'individuazione di vulnerabilità nei sistemi blockchain. Sviluppo di suite di test automatizzati integrate in pipeline CI/CD.</p>
-              <ul class="tags"><li>Blockchain Security</li><li>Test Automation</li><li>QA</li></ul>
-            </div>
-          </article>
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d5">gen 2022 — dic 2024</p>
-            <div class="job-body">
-              <h3><span>Co-Founder &amp; Web Project Manager</span></h3>
-              <p class="job-org">NodeOf Cosmonauts</p>
-              <p data-i18n="exp.t5">Gestione di nodi validatori nell'ecosistema Cosmos: configurazione, hardening e monitoraggio su Linux, in cloud e on-premise. Responsabile del sito web e della comunicazione del progetto.</p>
-              <ul class="tags"><li>Cosmos</li><li>Linux</li><li>Node Hardening</li></ul>
-            </div>
-          </article>
-          <article class="job reveal">
-            <p class="job-when" data-i18n="exp.d6">set 2021 — dic 2021</p>
-            <div class="job-body">
-              <h3><span data-i18n="exp.r6">Tirocinio curriculare</span></h3>
-              <p class="job-org">Ericsson · Pagani</p>
-              <p data-i18n="exp.t6">Tesi triennale: rete neurale in Python per il riconoscimento dei percorsi autorizzati in area portuale da dati geospaziali, con clustering DBSCAN e K-Means.</p>
-              <ul class="tags"><li>Machine Learning</li><li>Python</li><li>Clustering</li></ul>
-            </div>
-          </article>
+        <div class="sec-head sec-left">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.exp">Esperienza</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.exp">Il mio percorso</p>
+            <h2 class="sec-title reveal" data-i18n="nav.exp">Esperienza</h2>
+          </div>
         </div>
+        <div class="timeline-wrap" id="timeline">
+          <span class="tl-line" aria-hidden="true"><span class="tl-fill" id="tlFill"></span></span>
+          <ol class="timeline">
+          <li class="tl-item tl-left is-current">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/unisa-seal.svg" alt="Logo Università degli Studi di Salerno" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d1">set 2025 — oggi</p>
+                <h3><span data-i18n="about.role">Funzionario Tecnico</span><span class="now"><span class="dot"></span><span data-i18n="exp.now">Attuale</span></span></h3>
+                <p class="job-org">Università degli Studi di Salerno</p>
+                <p data-i18n="exp.t1">Gestione delle infrastrutture informatiche e robotiche del laboratorio MIVIA AIIR e supporto tecnico alla didattica e alla ricerca: ambienti di simulazione, server di calcolo e laboratori di penetration testing.</p>
+                <ul class="tags"><li>System Administration</li><li data-i18n="exp.tag.lab">Gestione laboratori</li><li>Troubleshooting</li></ul>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item tl-right">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/unisa-seal.svg" alt="Logo Università degli Studi di Salerno" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d2">apr 2026 — lug 2026</p>
+                <h3><span data-i18n="exp.r2">Esperto Disciplinare in Cybersecurity</span></h3>
+                <p class="job-org">Università degli Studi di Salerno</p>
+                <p data-i18n="exp.t2">Docente a contratto nell'Academy in Cybersecurity del Corso di Laurea in Ingegneria Informatica. Progettazione ed erogazione di un percorso teorico-pratico su penetration testing, ethical hacking e vulnerability assessment.</p>
+                <ul class="tags"><li>Ethical Hacking</li><li>Vulnerability Assessment</li><li data-i18n="exp.tag.teach">Docenza</li></ul>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item tl-left">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/bluereply.svg" alt="Logo Blue Reply" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d3">ott 2024 — ago 2025</p>
+                <h3><span>IT Consultant</span></h3>
+                <p class="job-org">Blue Reply · Milano</p>
+                <p data-i18n="exp.t3">Sviluppo backend di microservizi Java/Spring Boot per clienti del settore assicurativo. CI/CD multi-ambiente, quality gate con SonarQube e NexusIQ, test JUnit e Mockito con coverage superiore all'85%.</p>
+                <ul class="tags"><li>Java</li><li>Spring Boot</li><li data-i18n="exp.tag.micro">Microservizi</li><li>CI/CD</li></ul>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item tl-right">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/nttdata.svg" alt="Logo NTT DATA" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d4">apr 2024 — ott 2024</p>
+                <h3><span>QA Automation Engineer</span></h3>
+                <p class="job-org">NTT DATA Italia · Napoli</p>
+                <p data-i18n="exp.t4">Tesi magistrale sulle metodologie di testing per l'individuazione di vulnerabilità nei sistemi blockchain. Sviluppo di suite di test automatizzati integrate in pipeline CI/CD.</p>
+                <ul class="tags"><li>Blockchain Security</li><li>Test Automation</li><li>QA</li></ul>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item tl-left">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/noc.png" alt="Logo NodeOf Cosmonauts" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d5">gen 2022 — dic 2024</p>
+                <h3><span>Co-Founder &amp; Web Project Manager</span></h3>
+                <p class="job-org">NodeOf Cosmonauts</p>
+                <p data-i18n="exp.t5">Gestione di nodi validatori nell'ecosistema Cosmos: configurazione, hardening e monitoraggio su Linux, in cloud e on-premise. Responsabile del sito web e della comunicazione del progetto.</p>
+                <ul class="tags"><li>Cosmos</li><li>Linux</li><li>Node Hardening</li></ul>
+              </div>
+            </article>
+          </li>
+          <li class="tl-item tl-right">
+            <span class="tl-node" aria-hidden="true"></span>
+            <article class="job reveal">
+              <div class="job-logo"><img src="assets/logos/ericsson.svg" alt="Logo Ericsson" loading="lazy"></div>
+              <div class="job-body">
+                <p class="job-when" data-i18n="exp.d6">set 2021 — dic 2021</p>
+                <h3><span data-i18n="exp.r6">Tirocinio curriculare</span></h3>
+                <p class="job-org">Ericsson · Pagani</p>
+                <p data-i18n="exp.t6">Tesi triennale: rete neurale in Python per il riconoscimento dei percorsi autorizzati in area portuale da dati geospaziali, con clustering DBSCAN e K-Means.</p>
+                <ul class="tags"><li>Machine Learning</li><li>Python</li><li>Clustering</li></ul>
+              </div>
+            </article>
+          </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-        <h3 class="sub-title reveal" data-i18n="exp.edu">Formazione</h3>
+    <!-- EDUCATION -->
+    <section class="section edu-section" id="education">
+      <div class="container">
+        <div class="sec-head sec-right">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="exp.edu">Formazione</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="edu.eyebrow">I miei studi</p>
+            <h2 class="sec-title reveal" data-i18n="exp.edu">Formazione</h2>
+          </div>
+        </div>
         <div class="edu">
-          <article class="edu-card reveal">
-            <p class="job-when">2022 — 2024</p>
-            <h4 data-i18n="edu.lm">Laurea Magistrale con lode</h4>
-            <p>Software Engineering and IT Management</p>
-            <p class="job-org" data-i18n="about.unisaShort">Università degli Studi di Salerno</p>
+          <article class="edu-card edu-featured reveal">
+            <div class="edu-logo"><img src="assets/logos/unisa-seal.svg" alt="Sigillo Università degli Studi di Salerno" loading="lazy"></div>
+            <p class="edu-when">2022 — 2024</p>
+            <h3 data-i18n="edu.lm">Laurea Magistrale con lode</h3>
+            <p class="edu-field">Software Engineering and IT Management</p>
+            <p class="edu-school" data-i18n="about.unisaShort">Università degli Studi di Salerno</p>
+            <p class="edu-thesis"><strong data-i18n="edu.thesis">Tesi:</strong> <span data-i18n="edu.t1">metodologie di testing per l'individuazione di vulnerabilità nei sistemi blockchain, in collaborazione con NTT DATA.</span></p>
           </article>
           <article class="edu-card reveal">
-            <p class="job-when">2018 — 2022</p>
-            <h4 data-i18n="edu.lt">Laurea Triennale</h4>
-            <p data-i18n="edu.ltName">Scienze e Tecnologie Informatiche</p>
-            <p class="job-org" data-i18n="about.unisaShort">Università degli Studi di Salerno</p>
+            <div class="edu-logo"><img src="assets/logos/unisa-seal.svg" alt="Sigillo Università degli Studi di Salerno" loading="lazy"></div>
+            <p class="edu-when">2018 — 2022</p>
+            <h3 data-i18n="edu.lt">Laurea Triennale</h3>
+            <p class="edu-field" data-i18n="edu.ltName">Scienze e Tecnologie Informatiche</p>
+            <p class="edu-school" data-i18n="about.unisaShort">Università degli Studi di Salerno</p>
+            <p class="edu-thesis"><strong data-i18n="edu.thesis">Tesi:</strong> <span data-i18n="edu.t2">rete neurale per il riconoscimento dei percorsi autorizzati in area portuale, in collaborazione con Ericsson.</span></p>
           </article>
           <article class="edu-card reveal">
-            <p class="job-when">2013 — 2018</p>
-            <h4 data-i18n="edu.dip">Diploma</h4>
-            <p data-i18n="edu.dipName">Informatica</p>
-            <p class="job-org">ITIS “G. Marconi”</p>
+            <div class="edu-logo edu-logo-square"><img src="assets/logos/marconi.jpg" alt="Logo IIS G. Marconi" loading="lazy"></div>
+            <p class="edu-when">2013 — 2018</p>
+            <h3 data-i18n="edu.dip">Diploma</h3>
+            <p class="edu-field" data-i18n="edu.dipName">Informatica</p>
+            <p class="edu-school">ITIS “G. Marconi”</p>
           </article>
         </div>
       </div>
@@ -252,8 +307,13 @@
     <!-- PROJECTS -->
     <section class="section" id="projects">
       <div class="container">
-        <p class="eyebrow reveal" data-i18n="nav.projects">Progetti</p>
-        <h2 class="section-title reveal" data-i18n="projects.title">Progetti selezionati.</h2>
+        <div class="sec-head sec-left">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.projects">Progetti</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.projects">Cosa ho costruito</p>
+            <h2 class="sec-title reveal" data-i18n="nav.projects">Progetti</h2>
+          </div>
+        </div>
         <p class="lead reveal" data-i18n="projects.lead">Progetti accademici di ingegneria del software, compilatori e gestione dei dati.</p>
 
         <div class="projects">
@@ -294,16 +354,21 @@
     </section>
 
     <!-- WORK -->
-    <section class="section section-alt" id="work">
+    <section class="section" id="work">
       <div class="container">
-        <p class="eyebrow reveal" data-i18n="nav.work">Lavori</p>
-        <h2 class="section-title reveal" data-i18n="work.title">Collaborazioni.</h2>
+        <div class="sec-head sec-right">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.work">Lavori</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.work">Con chi ho collaborato</p>
+            <h2 class="sec-title reveal" data-i18n="nav.work">Lavori</h2>
+          </div>
+        </div>
         <div class="clients">
-          <a class="client reveal" href="https://github.com/vincenzo-esposit0/TapReview" target="_blank" rel="noopener">
+          <a class="client reveal" href="https://vincenzo-esposit0.github.io/TapReview/" target="_blank" rel="noopener">
             <div class="client-logo"><img src="assets/logos/tapreview.svg" alt="Logo TapReview" class="logo-square"></div>
             <h3>TapReview</h3>
             <p data-i18n="w.tap">Landing page per la vendita di prodotti NFC dedicati alle recensioni Google.</p>
-            <span class="link-arrow" data-i18n="w.repo">Vedi il progetto</span>
+            <span class="link-arrow" data-i18n="w.site">Visita il sito</span>
           </a>
           <a class="client reveal" href="https://www.thermexitalia.it/" target="_blank" rel="noopener">
             <div class="client-logo"><img src="assets/logos/thermex.png" alt="Logo Thermex"></div>
@@ -328,10 +393,16 @@
     </section>
 
     <!-- SKILLS -->
-    <section class="section section-dark" id="skills">
+    <section class="section" id="skills">
       <div class="container">
-        <p class="eyebrow reveal" data-i18n="nav.skills">Competenze</p>
-        <h2 class="section-title reveal" data-i18n="skills.certTitle">Certificazioni.</h2>
+        <div class="sec-head sec-left">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.skills">Competenze</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.skills">Cosa so fare</p>
+            <h2 class="sec-title reveal" data-i18n="nav.skills">Competenze</h2>
+          </div>
+        </div>
+        <h3 class="sec-sub reveal" data-i18n="skills.certTitle">Certificazioni.</h3>
 
         <div class="certs">
           <a class="cert cert-link reveal" href="assets/certificates/google-ai-professional.pdf" target="_blank" rel="noopener">
@@ -388,8 +459,14 @@
     <!-- CONTACT -->
     <section class="section contact" id="contact">
       <div class="container narrow">
-        <p class="eyebrow reveal" data-i18n="nav.contact">Contatti</p>
-        <h2 class="section-title reveal" data-i18n="contact.title">Lavoriamo<br><span class="gradient-text">insieme.</span></h2>
+        <div class="sec-head sec-center">
+          <span class="sec-ghost" aria-hidden="true" data-i18n="nav.contact">Contatti</span>
+          <div class="sec-heading">
+            <p class="sec-eyebrow reveal" data-i18n="eb.contact">Scrivimi</p>
+            <h2 class="sec-title reveal" data-i18n="nav.contact">Contatti</h2>
+          </div>
+        </div>
+        <h3 class="sec-sub reveal" data-i18n="contact.title">Lavoriamo <span class="gradient-text">insieme.</span></h3>
         <p class="lead reveal" data-i18n="contact.lead">Disponibile per progetti, collaborazioni e consulenze in ambito software e cybersecurity.</p>
         <div class="socials reveal">
           <a class="btn btn-primary" href="mailto:esposito.vincenzo.it@gmail.com">Email</a>

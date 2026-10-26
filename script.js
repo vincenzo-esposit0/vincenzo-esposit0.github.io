@@ -104,11 +104,22 @@ const en = {
   'skills.compilers': 'Compilers',
   'skills.data': 'AI, Data &amp; Blockchain',
   'skills.nosql': 'NoSQL Databases',
-  'contact.title': 'Let’s work<br><span class="gradient-text">together.</span>',
+  'contact.title': 'Let’s work <span class="gradient-text">together.</span>',
   'contact.lead': 'Available for projects, collaborations and consulting in software and cybersecurity.',
   'exp.title': 'Career.',
   'exp.now': 'Current',
   'exp.edu': 'Education',
+  'edu.eyebrow': 'My studies',
+  'eb.about': 'My story',
+  'eb.exp': 'My career',
+  'eb.projects': 'What I’ve built',
+  'eb.work': 'Who I’ve worked with',
+  'eb.skills': 'What I do',
+  'eb.contact': 'Write to me',
+  'edu.title': 'Education.',
+  'edu.thesis': 'Thesis:',
+  'edu.t1': 'testing methodologies for detecting vulnerabilities in blockchain systems, in collaboration with NTT DATA.',
+  'edu.t2': 'a neural network recognising authorised routes in a port area, in collaboration with Ericsson.',
   'exp.d1': 'Sep 2025 — present',
   'exp.t1': 'Management of the IT and robotics infrastructure of the MIVIA AIIR lab and technical support for teaching and research: simulation environments, compute servers and penetration-testing labs.',
   'exp.tag.lab': 'Lab management',
@@ -185,3 +196,35 @@ applyTheme(document.documentElement.dataset.theme);
 document.querySelectorAll('.lang-switch button').forEach(b => {
   b.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme));
 });
+
+// Timeline: la linea si riempie con lo scroll e i nodi si accendono
+const timeline = document.getElementById('timeline');
+const tlFill = document.getElementById('tlFill');
+const tlItems = timeline.querySelectorAll('.tl-item');
+let tlTicking = false;
+const updateTimeline = () => {
+  tlTicking = false;
+  const box = timeline.getBoundingClientRect();
+  const focus = innerHeight * 0.6;
+  const progress = Math.min(1, Math.max(0, (focus - box.top) / box.height));
+  tlFill.style.height = (progress * 100) + '%';
+  tlItems.forEach(item => {
+    const node = item.querySelector('.tl-node').getBoundingClientRect();
+    item.classList.toggle('is-active', node.top < focus);
+  });
+};
+window.addEventListener('scroll', () => {
+  if (!tlTicking) { tlTicking = true; requestAnimationFrame(updateTimeline); }
+}, { passive: true });
+window.addEventListener('resize', updateTimeline);
+updateTimeline();
+
+// Liquid glass: il riflesso segue il puntatore
+const glassSelector = '.tile, .card, .client, .job, .edu-card, .cert, .skill-group, .btn-primary';
+document.addEventListener('pointermove', e => {
+  const el = e.target.closest(glassSelector);
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}, { passive: true });
