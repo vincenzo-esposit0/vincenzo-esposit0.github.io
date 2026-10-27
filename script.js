@@ -85,6 +85,7 @@ const en = {
   'projects.title': 'Selected projects.',
   'projects.lead': 'Academic projects in software engineering, security, blockchain and data management.',
   'projects.more': 'All repositories on GitHub',
+  'p.spinoff': 'Proof of Concept for the redesign of the University of Salerno spin-off page, with search by sector and incubation status.',
   'p.cargo': 'Web app supporting the Port of Valencia. Built for the Software Engineering and Software Project Management courses.',
   'p.newlangTag': 'Compilers · Java',
   'p.newlang': 'Compiler for the NewLang language: syntax and semantic analysis, scoping and translation to C.',
