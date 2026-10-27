@@ -83,9 +83,15 @@ const en = {
   'cert.earnedOn': 'Earned July 2026',
   'cert.view': 'View certificate ↗',
   'projects.title': 'Selected projects.',
-  'projects.lead': 'Academic projects in software engineering, security, blockchain and data management.',
+  'projects.lead': 'A selection of personal and academic projects in cybersecurity, software engineering and blockchain.',
+  'projects.others': 'More projects.',
+  'projects.othersLead': 'Web applications, compilers, penetration testing and dApps.',
   'projects.more': 'All repositories on GitHub',
   'p.spinoff': 'Proof of Concept for the redesign of the University of Salerno spin-off page, with search by sector and incubation status.',
+  'fz.eyebrow': 'Featured · Cybersecurity',
+  'fz.text': 'Educational web app that collects, catalogues and compares firmware and repositories for Flipper Zero, with a feature matrix, installation guides and hands-on labs.',
+  'fz.cta': 'Open the hub ↗',
+  'fz.hint': 'Click to open ↗',
   'p.cargo': 'Web app supporting the Port of Valencia. Built for the Software Engineering and Software Project Management courses.',
   'p.newlangTag': 'Compilers · Java',
   'p.newlang': 'Compiler for the NewLang language: syntax and semantic analysis, scoping and translation to C.',
@@ -154,6 +160,7 @@ const i18nNodes = document.querySelectorAll('[data-i18n]');
 i18nNodes.forEach(el => { el.dataset.it = el.innerHTML; });
 const metaDesc = document.querySelector('meta[name="description"]');
 const metaIt = metaDesc.content;
+const fzDevice = document.querySelector('.fz-device');
 const pixelImg = document.querySelector('.show-device img');
 const pixelAltIt = pixelImg.alt;
 const metaEn = 'Vincenzo Esposito — Software Engineer and Cybersecurity Specialist. Technical Officer at the University of Salerno.';
@@ -164,6 +171,7 @@ const setLang = lang => {
     el.innerHTML = lang === 'en' ? (en[el.dataset.i18n] ?? el.dataset.it) : el.dataset.it;
   });
   metaDesc.content = lang === 'en' ? metaEn : metaIt;
+  fzDevice.setAttribute('aria-label', lang === 'en' ? 'Open Flipper Zero Firmware Hub' : 'Apri Flipper Zero Firmware Hub');
   pixelImg.alt = lang === 'en' ? 'Pixel-art Vincenzo Esposito with a waving robot' : pixelAltIt;
   toggle.setAttribute('aria-label', lang === 'en' ? 'Open menu' : 'Apri menu');
   document.querySelectorAll('.lang-switch button').forEach(b => {
@@ -269,3 +277,38 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 window.addEventListener('resize', updateShow);
 updateShow();
+
+// Progetti: Flipper Zero che entra in scena con lo scroll
+const fzTrack = document.getElementById('fzTrack');
+const fzStage = fzTrack.querySelector('.fz-stage');
+const fzTyped = fzTrack.querySelector('.fz-typed');
+const fzText = fzTyped.dataset.text;
+let fzTicking = false;
+const updateFlipper = () => {
+  fzTicking = false;
+  if (reduceMotion.matches) {
+    ['--p0', '--p1', '--p2', '--p3'].forEach(v => fzStage.style.setProperty(v, 1));
+    fzTyped.textContent = fzText;
+    fzStage.classList.add('is-live', 'is-split');
+    return;
+  }
+  const box = fzTrack.getBoundingClientRect();
+  const raw = -box.top / (box.height - innerHeight);
+  const p = Math.min(1, Math.max(0, raw));
+  const p0 = span(raw, -0.25, 0.2);
+  const p1 = ease(span(p, 0, 0.42));
+  const p2 = span(p, 0.4, 0.58);
+  const p3 = ease(span(p, 0.58, 0.86));
+  fzStage.style.setProperty('--p0', p0.toFixed(4));
+  fzStage.style.setProperty('--p1', p1.toFixed(4));
+  fzStage.style.setProperty('--p2', p2.toFixed(4));
+  fzStage.style.setProperty('--p3', p3.toFixed(4));
+  fzTyped.textContent = fzText.slice(0, Math.round(p0 * fzText.length));
+  fzStage.classList.toggle('is-live', p1 > 0.97);
+  fzStage.classList.toggle('is-split', p3 > 0.5);
+};
+window.addEventListener('scroll', () => {
+  if (!fzTicking) { fzTicking = true; requestAnimationFrame(updateFlipper); }
+}, { passive: true });
+window.addEventListener('resize', updateFlipper);
+updateFlipper();
