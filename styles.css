@@ -880,7 +880,7 @@ html { scroll-padding-top: 84px; }
 @keyframes fz-screen { 50% { opacity: .4; } }
 .fz-shine {
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  -webkit-mask: url(assets/flipper-pixel.png) center / 100% 100% no-repeat; mask: url(assets/flipper-pixel.png) center / 100% 100% no-repeat;
+  -webkit-mask: url(assets/flipper.png) center / 100% 100% no-repeat; mask: url(assets/flipper.png) center / 100% 100% no-repeat;
   opacity: calc(var(--p2) * (1 - var(--p2)) * 4);
 }
 .fz-shine::before {
@@ -1004,3 +1004,5 @@ html { scroll-padding-top: 84px; }
   .fz-term { margin-bottom: clamp(20px, 4vh, 40px); }
   .show-title { filter: none; }
 }
+/* Flipper: scalatura morbida durante l'animazione, evita lo sfarfallio dei pixel */
+.fz-device img { image-rendering: auto; }
