@@ -108,6 +108,7 @@ const en = {
   'skills.nosql': 'NoSQL Databases',
   'contact.title': 'Let’s work <span class="gradient-text">together.</span>',
   'contact.lead': 'Available for projects, collaborations and consulting in software and cybersecurity.',
+  'contact.hello': 'Hi!',
   'exp.title': 'Career.',
   'exp.now': 'Current',
   'exp.edu': 'Education',
@@ -152,6 +153,8 @@ const i18nNodes = document.querySelectorAll('[data-i18n]');
 i18nNodes.forEach(el => { el.dataset.it = el.innerHTML; });
 const metaDesc = document.querySelector('meta[name="description"]');
 const metaIt = metaDesc.content;
+const pixelImg = document.querySelector('.show-device img');
+const pixelAltIt = pixelImg.alt;
 const metaEn = 'Vincenzo Esposito — Software Engineer and Cybersecurity Specialist. Technical Officer at the University of Salerno.';
 
 const setLang = lang => {
@@ -160,6 +163,7 @@ const setLang = lang => {
     el.innerHTML = lang === 'en' ? (en[el.dataset.i18n] ?? el.dataset.it) : el.dataset.it;
   });
   metaDesc.content = lang === 'en' ? metaEn : metaIt;
+  pixelImg.alt = lang === 'en' ? 'Pixel-art Vincenzo Esposito with a waving robot' : pixelAltIt;
   toggle.setAttribute('aria-label', lang === 'en' ? 'Open menu' : 'Apri menu');
   document.querySelectorAll('.lang-switch button').forEach(b => {
     b.setAttribute('aria-pressed', b.dataset.lang === lang);
@@ -230,3 +234,37 @@ document.addEventListener('pointermove', e => {
   el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
   el.style.setProperty('--my', (e.clientY - r.top) + 'px');
 }, { passive: true });
+
+// Contatti: presentazione guidata dallo scroll
+const showTrack = document.getElementById('showTrack');
+const showStage = showTrack.querySelector('.show-stage');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const span = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+const ease = t => 1 - Math.pow(1 - t, 3);
+let showTicking = false;
+const updateShow = () => {
+  showTicking = false;
+  if (reduceMotion.matches) {
+    ['--p0', '--p1', '--p2', '--p3'].forEach(v => showStage.style.setProperty(v, 1));
+    showStage.classList.add('is-live', 'is-split');
+    return;
+  }
+  const box = showTrack.getBoundingClientRect();
+  const raw = -box.top / (box.height - innerHeight);
+  const p = Math.min(1, Math.max(0, raw));
+  const p0 = ease(span(raw, -0.3, 0.08));
+  const p1 = ease(span(p, 0, 0.4));
+  const p2 = span(p, 0.38, 0.56);
+  const p3 = ease(span(p, 0.56, 0.86));
+  showStage.style.setProperty('--p0', p0.toFixed(4));
+  showStage.style.setProperty('--p1', p1.toFixed(4));
+  showStage.style.setProperty('--p2', p2.toFixed(4));
+  showStage.style.setProperty('--p3', p3.toFixed(4));
+  showStage.classList.toggle('is-live', p1 > 0.97);
+  showStage.classList.toggle('is-split', p3 > 0.5);
+};
+window.addEventListener('scroll', () => {
+  if (!showTicking) { showTicking = true; requestAnimationFrame(updateShow); }
+}, { passive: true });
+window.addEventListener('resize', updateShow);
+updateShow();
