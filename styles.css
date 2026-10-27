@@ -941,3 +941,43 @@ html { scroll-padding-top: 84px; }
   .projects-head { margin-top: -4vh; }
 }
 @media (prefers-reduced-motion: reduce) { .projects-head { margin-top: 48px; } }
+
+/* Flipper: spazi calibrati sull'altezza reale del contenuto */
+#projects {
+  --dev-w: min(46vw, 720px, calc((100svh - 260px) * 1.5));
+  --dev-h: calc(var(--dev-w) / 1.565);
+  --fz-gap: calc((100svh - var(--dev-h)) / 2);
+}
+.fz-stage { --dev-w: inherit; }
+.fz-track { margin-top: min(24px, calc(140px - var(--fz-gap))); }
+.fz-term { position: absolute; top: auto; bottom: calc(100% + 28px); }
+.fz-device {
+  transform:
+    translate3d(calc((1 - var(--p3)) * (var(--copy-w) + var(--gap)) / 2), calc((1 - var(--p1)) * 30vh), 0)
+    rotateX(calc((1 - var(--p1)) * 55deg))
+    rotateZ(calc((1 - var(--p1)) * -28deg))
+    scale(calc(.45 + var(--p1) * .55));
+}
+.projects-head { margin-top: min(-24px, calc(64px - var(--fz-gap))); }
+@media (max-width: 820px) {
+  #projects { --dev-w: min(86vw, calc((100svh - 470px) * 1.5)); }
+  .fz-track { margin-top: 0; }
+  .fz-term { position: static; }
+  .fz-device { transform: translate3d(0, calc((1 - var(--p1)) * 24vh), 0) rotateX(calc((1 - var(--p1)) * 55deg)) rotateZ(calc((1 - var(--p1)) * -28deg)) scale(calc(.45 + var(--p1) * .55)); }
+  .projects-head { margin-top: -4vh; }
+}
+@media (prefers-reduced-motion: reduce) { .fz-track { margin-top: 24px; } .projects-head { margin-top: 48px; } }
+/* Flipper: riga del terminale a metà tra la barra di navigazione e il dispositivo */
+.fz-term { bottom: calc(100% + max(28px, (var(--fz-gap) - 100px) / 2)); font-size: clamp(18px, 2vw, 28px); }
+@media (max-width: 820px) { .fz-term { font-size: clamp(15px, 4.4vw, 20px); } }
+/* Flipper: prima dell'aggancio la riga del terminale resta sotto il testo introduttivo */
+.fz-track { margin-top: min(24px, max(72px - var(--fz-gap) / 2, 150px - var(--fz-gap))); }
+@media (max-width: 820px) { .fz-track { margin-top: 0; } }
+@media (prefers-reduced-motion: reduce) { .fz-track { margin-top: 24px; } }
+/* Flipper: nel finale la riga del terminale resta e segue il dispositivo, senza lasciare vuoti */
+@media (min-width: 821px) {
+  .fz-term {
+    opacity: min(1, calc(var(--p0) * 4));
+    transform: translateX(calc(var(--p3) * (var(--copy-w) + var(--gap)) / -2));
+  }
+}
