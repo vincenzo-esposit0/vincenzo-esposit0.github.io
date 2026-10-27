@@ -259,6 +259,7 @@ const updateShow = () => {
     return;
   }
   const box = showTrack.getBoundingClientRect();
+  if (box.top > innerHeight * 1.5 || box.bottom < -innerHeight * 0.5) return;
   const raw = -box.top / (box.height - innerHeight);
   const p = Math.min(1, Math.max(0, raw));
   const p0 = ease(span(raw, -0.3, 0.08));
@@ -293,6 +294,7 @@ const updateFlipper = () => {
     return;
   }
   const box = fzTrack.getBoundingClientRect();
+  if (box.top > innerHeight * 1.5 || box.bottom < -innerHeight * 0.5) return;
   const raw = -box.top / (box.height - innerHeight);
   const p = Math.min(1, Math.max(0, raw));
   const p0 = span(raw, -0.25, 0.2);

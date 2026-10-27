@@ -981,3 +981,26 @@ html { scroll-padding-top: 84px; }
     transform: translateX(calc(var(--p3) * (var(--copy-w) + var(--gap)) / -2));
   }
 }
+
+/* Prestazioni: niente filtri ricalcolati a ogni frame durante lo scroll */
+.show-glow, .fz-glow { filter: none; }
+.show-glow { background: radial-gradient(closest-side, rgba(41,151,255,.42), rgba(138,63,252,.24) 50%, transparent 80%); }
+.fz-glow { background: radial-gradient(closest-side, rgba(255,130,0,.36), rgba(255,92,122,.16) 50%, transparent 80%); }
+.show-title, .show-copy, .fz-copy { filter: none; }
+.fz-device { filter: none; }
+.fz-device::after {
+  content: ""; position: absolute; left: 12%; right: 12%; bottom: -10%; height: 22%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(120,50,0,.2), transparent);
+  opacity: var(--p1);
+}
+.fz-screen { filter: none; mix-blend-mode: normal; background: radial-gradient(closest-side, rgba(255,170,60,.55), transparent); width: 30%; height: 34%; left: 24%; top: 14%; }
+.show-stage, .fz-stage { contain: paint; }
+.show-device, .fz-device, .show-copy, .fz-copy, .show-title, .fz-term { will-change: transform, opacity; }
+.ambient span { will-change: transform; }
+@media (max-width: 820px) {
+  .ambient span { animation: none; }
+  .fz-track { height: 170vh; }
+  .show-track { height: 200vh; }
+  .fz-term { margin-bottom: clamp(20px, 4vh, 40px); }
+  .show-title { filter: none; }
+}
