@@ -107,7 +107,7 @@ const en = {
   'w.cate': 'Showcase website for a wedding & event planner.',
   'skills.certTitle': 'Certifications.',
   'cert.done': 'Completed:',
-  'cert.other': 'Other certifications:',
+  'cert.other': 'Other certifications (Learnn):',
   'skills.ops': 'DevOps &amp; Systems',
   'skills.se': 'Software Engineering',
   'skills.compilers': 'Compilers',
