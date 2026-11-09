@@ -13,7 +13,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="it" href="https://vincenzo-esposit0.github.io/?lang=it">
   <link rel="alternate" hreflang="en" href="https://vincenzo-esposit0.github.io/?lang=en">
-  <link rel="stylesheet" href="styles.css?v=2026-11-09.1">
+  <link rel="stylesheet" href="styles.css?v=2026-11-09.3">
   <script>
     // Tema: scelta salvata, altrimenti quello di sistema (prima del render per evitare flash)
     (function () {
@@ -159,7 +159,7 @@
           <article class="tile tile-gradient reveal">
             <p class="tile-kicker" data-i18n="about.focus">Specializzazione</p>
             <h3>Cybersecurity</h3>
-            <p data-i18n="about.focusText">Penetration testing, ethical hacking e vulnerability assessment. Docente in un'Academy universitaria di cybersecurity.</p>
+            <p data-i18n="about.focusText">Penetration testing, ethical hacking e vulnerability assessment.<br>Docente in un'Academy universitaria di cybersecurity.</p>
           </article>
           <article class="tile tile-blue reveal">
             <p class="tile-kicker" data-i18n="about.passion">Interessi</p>
@@ -320,48 +320,36 @@
           <div class="fz-stage">
             <div class="fz-glow" aria-hidden="true"></div>
             <div class="fz-scene">
-              <p class="fz-term" aria-hidden="true"><span class="fz-prompt">&gt;</span> <span class="fz-typed" data-text="flipper-zero-firmware-hub"></span><span class="fz-caret">_</span></p>
-              <a class="fz-device" href="https://vincenzo-esposit0.github.io/flipper-zero-firmware-hub/" target="_blank" rel="noopener" aria-label="Apri Flipper Zero Firmware Hub">
+              <p class="fz-term" aria-hidden="true"><span class="fz-prompt">$</span> <span class="fz-typed" data-text="dryflash run firmware.dfu"></span><span class="fz-caret">_</span></p>
+              <a class="fz-device" href="https://app.dryflash.workers.dev/" target="_blank" rel="noopener" aria-label="Prova dryflash, l’emulatore di Flipper Zero">
                 <img src="assets/flipper.png" width="532" height="340" decoding="async" alt="Flipper Zero in pixel art">
                 <span class="fz-screen" aria-hidden="true"></span>
                 <span class="fz-shine" aria-hidden="true"></span>
-                <span class="fz-hint" aria-hidden="true" data-i18n="fz.hint">Clicca per aprire ↗</span>
+                <span class="fz-hint" aria-hidden="true" data-i18n="fz.hint">Clicca per provarlo ↗</span>
               </a>
               <div class="fz-copy">
-                <p class="fz-eyebrow" data-i18n="fz.eyebrow">In evidenza · Cybersecurity</p>
-                <h3 class="fz-title">Flipper Zero <br><span class="fz-accent">Firmware Hub.</span></h3>
-                <p class="fz-text" data-i18n="fz.text">Web app didattica che raccoglie, cataloga e confronta firmware e repository per Flipper Zero, con matrice delle funzionalità, guide all’installazione e laboratori pratici.</p>
-                <p class="card-tag">React · TypeScript · Tailwind CSS</p>
-                <a class="btn btn-primary fz-cta" href="https://vincenzo-esposit0.github.io/flipper-zero-firmware-hub/" target="_blank" rel="noopener" data-i18n="fz.cta">Apri l’hub ↗</a>
+                <p class="fz-eyebrow" data-i18n="fz.eyebrow">In evidenza · Embedded Security</p>
+                <h3 class="fz-title">dryflash. <br><span class="fz-accent" data-i18n="fz.title">Flipper Zero nel browser.</span></h3>
+                <p class="fz-text" data-i18n="fz.text">Emulatore open source dello STM32WB55 in Rust e WebAssembly: avvia i firmware reali del Flipper Zero direttamente nel browser e ne rileva crash, fault e blocchi prima del flash sul dispositivo.</p>
+                <p class="card-tag">Rust · WebAssembly · TypeScript · CI</p>
+                <div class="fz-actions">
+                  <a class="btn btn-primary fz-cta" href="https://app.dryflash.workers.dev/" target="_blank" rel="noopener" data-i18n="fz.cta">Prova l’emulatore ↗</a>
+                  <a class="btn btn-secondary fz-code" href="https://github.com/vincenzo-esposit0/dryflash-FZ" target="_blank" rel="noopener" data-i18n="fz.code">Codice sorgente</a>
+                </div>
+                <a class="fz-companion" href="https://vincenzo-esposit0.github.io/flipper-zero-firmware-hub/" target="_blank" rel="noopener">
+                  <span class="fz-companion-label" data-i18n="fz.hubLabel">Dallo stesso ecosistema</span>
+                  <span class="fz-companion-name">Flipper Zero Firmware Hub ↗</span>
+                  <span class="fz-companion-text" data-i18n="fz.hubText">Catalogo didattico che confronta firmware e repository, con guide all’installazione.</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
         <div class="projects-head reveal">
           <h3 class="projects-sub" data-i18n="projects.others">Altri progetti.</h3>
-          <p data-i18n="projects.othersLead">Applicazioni web, compilatori, penetration testing e dApp.</p>
+          <p data-i18n="projects.othersLead">Compilatori, penetration testing, gestione di progetto, web e dApp.</p>
         </div>
         <div class="projects projects-after">
-          <a class="card reveal" href="https://vincenzo-esposit0.github.io/Unisa-SpinOffs/" target="_blank" rel="noopener">
-            <div class="card-media media-spinoff">
-              <img class="app-icon app-icon-pad" src="assets/logos/unisa-seal.svg" alt="Logo Università degli Studi di Salerno" width="132" height="132">
-            </div>
-            <div class="card-body">
-              <p class="card-tag">Web · React · TypeScript</p>
-              <h3>UNISA Spin-off</h3>
-              <p data-i18n="p.spinoff">Proof of Concept per il restyling della pagina degli spin-off dell’Università di Salerno, con ricerca per settore e stato di incubazione.</p>
-            </div>
-          </a>
-          <a class="card reveal" href="https://github.com/vincenzo-esposit0/C07_SmartCargo" target="_blank" rel="noopener">
-            <div class="card-media media-cargo">
-              <img class="app-icon" src="assets/logos/smartcargo.png" alt="Logo SmartCargo" width="132" height="132">
-            </div>
-            <div class="card-body">
-              <p class="card-tag">Web · Python · Project Management</p>
-              <h3>SmartCargo</h3>
-              <p data-i18n="p.cargo">Web app a supporto del Porto di Valencia. Progetto dei corsi di Ingegneria del Software e Gestione dei Progetti Software.</p>
-            </div>
-          </a>
           <a class="card reveal" href="https://github.com/vincenzo-esposit0/NewLang_Compiler" target="_blank" rel="noopener">
             <div class="card-media media-newlang">
               <img class="app-icon" src="assets/logos/newlang.svg" alt="Logo NewLang" width="132" height="132">
@@ -370,16 +358,6 @@
               <p class="card-tag" data-i18n="p.newlangTag">Compilatori · Java</p>
               <h3>NewLang Compiler</h3>
               <p data-i18n="p.newlang">Compilatore per il linguaggio NewLang: analisi sintattica e semantica, scoping e traduzione in C.</p>
-            </div>
-          </a>
-          <a class="card reveal" href="https://drive.google.com/file/d/1XRBWm9OJ0BUpnDhiXuPnqbssEK-SQ_Fk/view" target="_blank" rel="noopener">
-            <div class="card-media media-caz">
-              <img class="app-icon" src="assets/logos/cleanairzone.svg" alt="Logo Clean Air Zone" width="132" height="132">
-            </div>
-            <div class="card-body">
-              <p class="card-tag">Database NoSQL</p>
-              <h3>Clean Air Zone</h3>
-              <p data-i18n="p.caz">Modellazione e interrogazione di dati su database NoSQL.</p>
             </div>
           </a>
           <a class="card reveal" href="https://github.com/vincenzo-esposit0/Web_Machine_N7" target="_blank" rel="noopener">
@@ -392,6 +370,26 @@
               <p data-i18n="p.n7">Penetration test etico della macchina vulnerabile Web Machine (N7): dalla ricognizione e scansione delle porte al vulnerability mapping, fino a exploitation e post-exploitation, con report finale.</p>
             </div>
           </a>
+          <a class="card reveal" href="https://github.com/vincenzo-esposit0/C07_SmartCargo" target="_blank" rel="noopener">
+            <div class="card-media media-cargo">
+              <img class="app-icon" src="assets/logos/smartcargo.png" alt="Logo SmartCargo" width="132" height="132">
+            </div>
+            <div class="card-body">
+              <p class="card-tag" data-i18n="p.cargoTag">Project Management · Python</p>
+              <h3>SmartCargo</h3>
+              <p data-i18n="p.cargo">Co-Project Manager di un team di sei sviluppatori per una web app a supporto del Porto di Valencia: tracciamento dei mezzi, percorsi ottimizzati e report.</p>
+            </div>
+          </a>
+          <a class="card reveal" href="https://vincenzo-esposit0.github.io/Unisa-SpinOffs/" target="_blank" rel="noopener">
+            <div class="card-media media-spinoff">
+              <img class="app-icon app-icon-pad" src="assets/logos/unisa-seal.svg" alt="Logo Università degli Studi di Salerno" width="132" height="132">
+            </div>
+            <div class="card-body">
+              <p class="card-tag">Web · React · TypeScript</p>
+              <h3>UNISA Spin-off</h3>
+              <p data-i18n="p.spinoff">Proof of Concept per il restyling della pagina degli spin-off dell’Università di Salerno, con ricerca per settore e stato di incubazione.</p>
+            </div>
+          </a>
           <a class="card reveal" href="https://github.com/vincenzo-esposit0/AvatarMarket" target="_blank" rel="noopener">
             <div class="card-media media-avatar">
               <img class="app-icon" src="assets/logos/avatarmarket.svg" alt="Logo Avatar Market" width="132" height="132">
@@ -400,6 +398,16 @@
               <p class="card-tag">DApp · Solidity · Web3.js</p>
               <h3>Avatar Market</h3>
               <p data-i18n="p.avatar">Applicazione decentralizzata per l'acquisto di avatar NFT a tema Cosmos, con smart contract in Solidity, Truffle, Ganache e MetaMask.</p>
+            </div>
+          </a>
+          <a class="card reveal" href="https://drive.google.com/file/d/1XRBWm9OJ0BUpnDhiXuPnqbssEK-SQ_Fk/view" target="_blank" rel="noopener">
+            <div class="card-media media-caz">
+              <img class="app-icon" src="assets/logos/cleanairzone.svg" alt="Logo Clean Air Zone" width="132" height="132">
+            </div>
+            <div class="card-body">
+              <p class="card-tag">Database NoSQL</p>
+              <h3>Clean Air Zone</h3>
+              <p data-i18n="p.caz">Modellazione e interrogazione di dati su database NoSQL.</p>
             </div>
           </a>
         </div>
@@ -559,6 +567,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2026-11-09.1"></script>
+  <script src="script.js?v=2026-11-09.3"></script>
 </body>
 </html>

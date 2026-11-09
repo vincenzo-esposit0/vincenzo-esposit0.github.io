@@ -75,7 +75,7 @@ const en = {
   'about.degree': 'MSc cum laude in Software Engineering and IT Management.',
   'about.certs': 'Google Certifications',
   'about.focus': 'Specialisation',
-  'about.focusText': 'Penetration testing, ethical hacking and vulnerability assessment. Lecturer in a university cybersecurity academy.',
+  'about.focusText': 'Penetration testing, ethical hacking and vulnerability assessment.<br>Lecturer in a university cybersecurity academy.',
   'about.passion': 'Interests',
   'about.passionText': 'Co-founder of NodeOf Cosmonauts, a validator in the Cosmos ecosystem.',
   'cert.progress': 'In progress',
@@ -85,14 +85,19 @@ const en = {
   'projects.title': 'Selected projects.',
   'projects.lead': 'A selection of personal and academic projects in cybersecurity, software engineering and blockchain.',
   'projects.others': 'More projects.',
-  'projects.othersLead': 'Web applications, compilers, penetration testing and dApps.',
+  'projects.othersLead': 'Compilers, penetration testing, project management, web and dApps.',
   'projects.more': 'All repositories on GitHub',
   'p.spinoff': 'Proof of Concept for the redesign of the University of Salerno spin-off page, with search by sector and incubation status.',
-  'fz.eyebrow': 'Featured · Cybersecurity',
-  'fz.text': 'Educational web app that collects, catalogues and compares firmware and repositories for Flipper Zero, with a feature matrix, installation guides and hands-on labs.',
-  'fz.cta': 'Open the hub ↗',
-  'fz.hint': 'Click to open ↗',
-  'p.cargo': 'Web app supporting the Port of Valencia. Built for the Software Engineering and Software Project Management courses.',
+  'fz.eyebrow': 'Featured · Embedded Security',
+  'fz.title': 'Flipper Zero in your browser.',
+  'fz.text': 'Open-source STM32WB55 emulator in Rust and WebAssembly: it boots real Flipper Zero firmware right in the browser and catches crashes, faults and hangs before you flash the device.',
+  'fz.code': 'Source code',
+  'fz.hubLabel': 'Same ecosystem',
+  'fz.hubText': 'Educational catalogue comparing firmware and repositories, with installation guides.',
+  'fz.cta': 'Try the emulator ↗',
+  'fz.hint': 'Click to try it ↗',
+  'p.cargo': 'Co-Project Manager of a six-developer team building a web app for the Port of Valencia: vehicle tracking, optimised routes and reports.',
+  'p.cargoTag': 'Project Management · Python',
   'p.newlangTag': 'Compilers · Java',
   'p.newlang': 'Compiler for the NewLang language: syntax and semantic analysis, scoping and translation to C.',
   'p.n7': 'Ethical penetration test of the vulnerable Web Machine (N7): from reconnaissance and port scanning to vulnerability mapping, exploitation and post-exploitation, with a final report.',
@@ -171,7 +176,7 @@ const setLang = lang => {
     el.innerHTML = lang === 'en' ? (en[el.dataset.i18n] ?? el.dataset.it) : el.dataset.it;
   });
   metaDesc.content = lang === 'en' ? metaEn : metaIt;
-  fzDevice.setAttribute('aria-label', lang === 'en' ? 'Open Flipper Zero Firmware Hub' : 'Apri Flipper Zero Firmware Hub');
+  fzDevice.setAttribute('aria-label', lang === 'en' ? 'Try dryflash, the Flipper Zero emulator' : 'Prova dryflash, l’emulatore di Flipper Zero');
   pixelImg.alt = lang === 'en' ? 'Pixel-art Vincenzo Esposito with a waving robot' : pixelAltIt;
   toggle.setAttribute('aria-label', lang === 'en' ? 'Open menu' : 'Apri menu');
   document.querySelectorAll('.lang-switch button').forEach(b => {
@@ -280,6 +285,19 @@ window.addEventListener('resize', updateShow);
 updateShow();
 
 // Progetti: Flipper Zero che entra in scena con lo scroll
+
+// Quanto il testo (centrato sul Flipper) sporge sotto il dispositivo: serve a distanziare il divider
+const fzProjects = document.getElementById('projects');
+const measureFzOver = () => {
+  const copy = document.querySelector('.fz-copy');
+  const dev = document.querySelector('.fz-device');
+  if (!copy || !dev) return;
+  const over = Math.max(0, (copy.offsetHeight - dev.offsetHeight) / 2);
+  fzProjects.style.setProperty('--fz-over', over.toFixed(0) + 'px');
+};
+measureFzOver();
+addEventListener('resize', measureFzOver, { passive: true });
+addEventListener('load', measureFzOver);
 const fzTrack = document.getElementById('fzTrack');
 const fzStage = fzTrack.querySelector('.fz-stage');
 const fzTyped = fzTrack.querySelector('.fz-typed');
