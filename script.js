@@ -294,6 +294,7 @@ const measureFzOver = () => {
   if (!copy || !dev) return;
   const over = Math.max(0, (copy.offsetHeight - dev.offsetHeight) / 2);
   fzProjects.style.setProperty('--fz-over', over.toFixed(0) + 'px');
+  fzProjects.style.setProperty('--fz-copy-h', copy.offsetHeight.toFixed(0) + 'px');
 };
 measureFzOver();
 addEventListener('resize', measureFzOver, { passive: true });

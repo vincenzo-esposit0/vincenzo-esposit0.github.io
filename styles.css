@@ -1043,3 +1043,26 @@ html { scroll-padding-top: 84px; }
 @media (min-width: 821px) {
   .projects-head { margin-top: min(-24px, calc(64px + var(--fz-over, 0px) - var(--fz-gap))); }
 }
+
+/* Flipper: la riga del terminale si aggancia al dispositivo, non alla colonna di testo (schermi bassi, es. MacBook 14") */
+@media (min-width: 821px) {
+  .fz-term { bottom: calc(50% + var(--dev-h) / 2 + max(28px, (var(--fz-gap) - 100px) / 2)); }
+}
+@media (min-width: 821px) and (max-height: 860px) {
+  .fz-title { font-size: clamp(32px, min(4.2vw, 6.4vh), 60px); }
+  .fz-text { margin: 14px 0 10px; }
+  .fz-companion { margin-top: 16px; }
+}
+/* Flipper su colonna singola: il dispositivo si ridimensiona per lasciare spazio a riga del terminale e testo */
+@media (max-width: 820px) and (prefers-reduced-motion: no-preference) {
+  #projects { --dev-w: max(200px, min(86vw, 560px, calc((100svh - 84px - 16px - 72px - 40px - var(--fz-copy-h, 380px)) * 1.565))); }
+  .fz-stage { padding-top: 84px; padding-bottom: 16px; }
+  .projects-head { margin-top: 0; }
+}
+/* Flipper su desktop basso: pulsanti su una riga e box del Hub compatto */
+@media (min-width: 821px) and (max-height: 760px) {
+  .fz-actions { flex-wrap: nowrap; gap: 8px; }
+  .fz-actions .btn { padding: 10px 16px; font-size: 15px; white-space: nowrap; }
+  .fz-companion { padding: 10px 14px; }
+  .fz-companion-text { display: none; }
+}
