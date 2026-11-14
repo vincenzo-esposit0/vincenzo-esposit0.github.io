@@ -66,9 +66,9 @@
       .from(portrait, { scale: 0.88, opacity: 0, filter: 'blur(10px)', duration: 0.8, ease: 'expo.out' }, '-=0.45')
       .add(() => { heroRest.forEach(release); heroSplit.revert(); });
 
-    // 2. Hero: allo scroll il ritratto sale e si rimpicciolisce, il titolo sfuma
+    // 2. Hero: allo scroll il ritratto sale appena (leggera parallasse, senza cambiare dimensione), il titolo sfuma
     gsap.to(portrait, {
-      yPercent: -18, scale: 0.9, ease: 'none',
+      yPercent: -8, ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 },
     });
     gsap.to(heroTitle, {
@@ -136,7 +136,33 @@
       io.observe(el);
     });
 
+    // 6. Ritratto: inclinazione 3D che segue il puntatore, con riflesso di luce (solo mouse/trackpad)
+    let stopTilt = () => {};
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const tilt = portrait.querySelector('.portrait-tilt');
+      const glare = portrait.querySelector('.portrait-glare');
+      const rx = gsap.quickTo(tilt, 'rotationX', { duration: 0.6, ease: 'power3.out' });
+      const ry = gsap.quickTo(tilt, 'rotationY', { duration: 0.6, ease: 'power3.out' });
+      const onMove = e => {
+        const r = portrait.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        ry((x - 0.5) * 18);
+        rx((0.5 - y) * 18);
+        glare.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+        glare.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      };
+      const onLeave = () => { rx(0); ry(0); };
+      portrait.addEventListener('pointermove', onMove);
+      portrait.addEventListener('pointerleave', onLeave);
+      stopTilt = () => {
+        portrait.removeEventListener('pointermove', onMove);
+        portrait.removeEventListener('pointerleave', onLeave);
+        gsap.set(tilt, { clearProps: 'transform' });
+      };
+    }
+
     return () => {
+      stopTilt();
       io.disconnect();
       heroSplit.revert();
       langButtons.forEach(b => b.removeEventListener('click', dropStaleLabels));

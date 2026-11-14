@@ -76,6 +76,7 @@ const en = {
   'about.unisa': 'University of Salerno',
   'about.unisaShort': 'University of Salerno',
   'about.role': 'Technical Officer',
+  'about.since': 'Since September 2025',
   'about.edu': 'Education',
   'about.degree': 'MSc cum laude in Software Engineering and IT Management.',
   'about.certs': 'Google Certifications',
