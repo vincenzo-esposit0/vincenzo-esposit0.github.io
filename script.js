@@ -114,7 +114,7 @@ const en = {
   'w.repo': 'View project',
   'w.site': 'Visit website',
   'w.thermex': 'Corporate website.',
-  'w.noc': 'Co-founder. Validator in the Cosmos ecosystem, with a BitCanna archive and a Comdex faucet.',
+  'w.noc': 'Website for the Cosmos validator I co-founded.',
   'w.cate': 'Showcase website for a wedding & event planner.',
   'skills.certTitle': 'Certifications.',
   'skills.stackTitle': 'Skills & stack.',
