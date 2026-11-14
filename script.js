@@ -117,6 +117,8 @@ const en = {
   'w.noc': 'Co-founder. Validator in the Cosmos ecosystem, with a BitCanna archive and a Comdex faucet.',
   'w.cate': 'Showcase website for a wedding & event planner.',
   'skills.certTitle': 'Certifications.',
+  'skills.stackTitle': 'Skills & stack.',
+  'cert.otherTitle': 'Other certifications',
   'cert.done': 'Completed:',
   'cert.other': 'Other certifications (Learnn):',
   'skills.ops': 'DevOps &amp; Systems',

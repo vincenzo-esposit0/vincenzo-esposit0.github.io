@@ -15,7 +15,7 @@
   <link rel="alternate" hreflang="it" href="https://esposito-vincenzo.it/?lang=it">
   <link rel="alternate" hreflang="en" href="https://esposito-vincenzo.it/?lang=en">
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css">
-  <link rel="stylesheet" href="styles.css?v=2026-11-14.17">
+  <link rel="stylesheet" href="styles.css?v=2026-11-14.20">
   <script>
     // Tema: scelta salvata, altrimenti quello di sistema (prima del render per evitare flash)
     (function () {
@@ -495,58 +495,59 @@
             <h2 class="sec-title reveal" data-i18n="nav.skills">Competenze</h2>
           </div>
         </div>
+        <h3 class="sec-sub reveal" data-i18n="skills.stackTitle">Stack e competenze.</h3>
+
+        <div class="skills">
+          <div class="skill-group sg-cyber reveal">
+            <div class="sg-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><h3>Cybersecurity</h3></div>
+            <ul><li>Penetration Testing</li><li>Ethical Hacking</li><li>Vulnerability Assessment</li><li>SIEM</li><li>Cyber Risk</li><li>Network Scanning</li></ul>
+          </div>
+          <div class="skill-group sg-se reveal">
+            <div class="sg-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span><h3 data-i18n="skills.se">Ingegneria del Software</h3></div>
+            <ul><li>Java</li><li>Spring Boot</li><li data-i18n="exp.tag.micro">Microservizi</li><li>Python</li><li>JUnit &amp; Mockito</li><li>Debug</li></ul>
+          </div>
+          <div class="skill-group sg-ops reveal">
+            <div class="sg-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="7" rx="2"/><rect x="3.5" y="13" width="17" height="7" rx="2"/><path d="M7.5 7.5h.01M7.5 16.5h.01M11 7.5h5M11 16.5h5"/></svg></span><h3 data-i18n="skills.ops">DevOps &amp; Sistemi</h3></div>
+            <ul><li>CI/CD</li><li>SonarQube</li><li>NexusIQ</li><li>Linux</li><li>System Administration</li><li>Git</li></ul>
+          </div>
+          <div class="skill-group sg-data reveal">
+            <div class="sg-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="2"/><path d="M10 10h4v4h-4zM9 3.5v3M15 3.5v3M9 17.5v3M15 17.5v3M3.5 9h3M3.5 15h3M17.5 9h3M17.5 15h3"/></svg></span><h3 data-i18n="skills.data">AI, Dati &amp; Blockchain</h3></div>
+            <ul><li>Machine Learning</li><li>Clustering</li><li data-i18n="skills.nosql">Database NoSQL</li><li>Cosmos SDK</li><li>Blockchain Security</li></ul>
+          </div>
+        </div>
+
         <h3 class="sec-sub reveal" data-i18n="skills.certTitle">Certificazioni.</h3>
 
         <div class="certs">
           <a class="cert cert-link reveal" href="assets/certificates/google-ai-professional.pdf" target="_blank" rel="noopener">
-            <svg class="cert-badge" aria-hidden="true"><use href="#badge-ai"/></svg>
-            <div>
-              <p class="cert-issuer">Google · Coursera</p>
-              <h3>AI Professional Certificate</h3>
-              <p class="status done"><span class="dot"></span><span data-i18n="cert.earnedOn">Conseguita a luglio 2026</span></p>
-              <p class="cert-view" data-i18n="cert.view">Vedi il certificato ↗</p>
-            </div>
+            <div class="cert-top"><svg class="cert-badge" aria-hidden="true"><use href="#badge-ai"/></svg></div>
+            <p class="cert-issuer">Google · Coursera</p>
+            <h3>AI Professional Certificate</h3>
+            <p class="cert-status status done"><span class="dot"></span><span data-i18n="cert.earnedOn">Conseguita a luglio 2026</span></p>
+            <p class="cert-view" data-i18n="cert.view">Vedi il certificato ↗</p>
           </a>
           <article class="cert reveal">
-            <svg class="cert-badge" aria-hidden="true"><use href="#badge-cyber"/></svg>
-            <div>
-              <p class="cert-issuer">Google</p>
-              <h3>Cybersecurity Professional Certificate</h3>
-              <p class="cert-done"><span data-i18n="cert.done">Completato:</span> Foundations of Cybersecurity</p>
-              <p class="status"><span class="dot"></span><span data-i18n="cert.progress">In corso</span></p>
-            </div>
+            <div class="cert-top"><svg class="cert-badge" aria-hidden="true"><use href="#badge-cyber"/></svg></div>
+            <p class="cert-issuer">Google</p>
+            <h3>Cybersecurity Professional Certificate</h3>
+            <p class="cert-done"><span data-i18n="cert.done">Completato:</span> Foundations of Cybersecurity</p>
+            <p class="cert-status status"><span class="dot"></span><span data-i18n="cert.progress">In corso</span></p>
           </article>
           <article class="cert reveal">
-            <svg class="cert-badge" aria-hidden="true"><use href="#badge-network"/></svg>
-            <div>
-              <p class="cert-issuer">Google</p>
-              <h3>Network Security</h3>
-              <p class="status"><span class="dot"></span><span data-i18n="cert.progress">In corso</span></p>
+            <div class="cert-top"><svg class="cert-badge" aria-hidden="true"><use href="#badge-network"/></svg></div>
+            <p class="cert-issuer">Google</p>
+            <h3>Network Security</h3>
+            <p class="cert-status status"><span class="dot"></span><span data-i18n="cert.progress">In corso</span></p>
+          </article>
+          <article class="cert cert-more reveal">
+            <div class="cert-top"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg></span></div>
+            <p class="cert-issuer">Learnn</p>
+            <h3 data-i18n="cert.otherTitle">Altre certificazioni</h3>
+            <div class="cert-chips">
+              <a class="cert-chip" href="assets/certificates/learnn-web3.png" target="_blank" rel="noopener" title="Learnn · Web 3.0 · 17-11-2023">Web 3.0 ↗</a>
+              <a class="cert-chip" href="assets/certificates/learnn-cybersecurity.png" target="_blank" rel="noopener" title="Learnn · Cybersecurity · 11-12-2023">Cybersecurity ↗</a>
             </div>
           </article>
-        </div>
-
-        <p class="cert-other reveal"><span data-i18n="cert.other">Altre certificazioni (Learnn):</span>
-          <a class="cert-chip" href="assets/certificates/learnn-web3.png" target="_blank" rel="noopener" title="Learnn · Web 3.0 · 17-11-2023">Web 3.0 ↗</a>
-          <a class="cert-chip" href="assets/certificates/learnn-cybersecurity.png" target="_blank" rel="noopener" title="Learnn · Cybersecurity · 11-12-2023">Cybersecurity ↗</a></p>
-
-        <div class="skills">
-          <div class="skill-group reveal">
-            <h3>Cybersecurity</h3>
-            <ul><li>Penetration Testing</li><li>Ethical Hacking</li><li>Vulnerability Assessment</li><li>SIEM</li><li>Cyber Risk</li><li>Network Scanning</li></ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 data-i18n="skills.se">Ingegneria del Software</h3>
-            <ul><li>Java</li><li>Spring Boot</li><li data-i18n="exp.tag.micro">Microservizi</li><li>Python</li><li>JUnit &amp; Mockito</li><li>Debug</li></ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 data-i18n="skills.ops">DevOps &amp; Sistemi</h3>
-            <ul><li>CI/CD</li><li>SonarQube</li><li>NexusIQ</li><li>Linux</li><li>System Administration</li><li>Git</li></ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 data-i18n="skills.data">AI, Dati &amp; Blockchain</h3>
-            <ul><li>Machine Learning</li><li>Clustering</li><li data-i18n="skills.nosql">Database NoSQL</li><li>Cosmos SDK</li><li>Blockchain Security</li></ul>
-          </div>
         </div>
       </div>
     </section>
@@ -601,7 +602,7 @@
   <script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
   <script src="assets/vendor/gsap/SplitText.min.js"></script>
   <script src="assets/vendor/lenis/lenis.min.js"></script>
-  <script src="script.js?v=2026-11-14.16"></script>
-  <script src="motion.js?v=2026-11-14.18"></script>
+  <script src="script.js?v=2026-11-14.19"></script>
+  <script src="motion.js?v=2026-11-14.19"></script>
 </body>
 </html>
