@@ -37,7 +37,8 @@ const revealObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// Con GSAP attivo le comparse sono gestite da motion.js
+if (!window.gsap) document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -135,6 +136,8 @@ const en = {
   'edu.thesis': 'Thesis:',
   'edu.t1': 'testing methodologies for detecting vulnerabilities in blockchain systems, in collaboration with NTT DATA.',
   'edu.t2': 'a neural network recognising authorised routes in a port area, in collaboration with Ericsson.',
+  'edu.exam': 'Final exam project:',
+  'edu.t3': 'design and development of a web application for booking hotel rooms.',
   'exp.d1': 'Sep 2025 — present',
   'exp.t1': 'Management of the IT and robotics infrastructure of the MIVIA AIIR lab and technical support for teaching and research: simulation environments, compute servers and penetration-testing labs.',
   'exp.tag.lab': 'Lab management',

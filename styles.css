@@ -422,13 +422,14 @@ p { margin: 0; }
   .sec-head { min-height: 140px; }
 }
 
-.edu { margin-top: 64px; display: grid; gap: 28px; grid-template-columns: repeat(3, 1fr); align-items: start; }
+.edu { margin-top: 64px; display: grid; gap: 28px; grid-template-columns: repeat(3, 1fr); align-items: stretch; padding-bottom: 120px; }
 .edu-card {
   text-align: center; padding: 44px 30px 46px;
   display: flex; flex-direction: column; align-items: center;
 }
-.edu-card:nth-child(2) { margin-top: 60px; }
-.edu-card:nth-child(3) { margin-top: 120px; }
+/* Scaletta: card della stessa altezza, sfalsate con top (non margin) così anche i bordi inferiori scendono a gradini */
+.edu-card:nth-child(2) { top: 60px; }
+.edu-card:nth-child(3) { top: 120px; }
 .edu-logo {
   width: 104px; height: 104px; border-radius: 50%; margin-bottom: 22px;
   background: #fff; display: grid; place-items: center; padding: 6px;
@@ -455,7 +456,8 @@ p { margin: 0; }
 .edu-featured .edu-thesis strong { color: #fff; }
 @media (max-width: 860px) {
   .edu { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
-  .edu-card:nth-child(2), .edu-card:nth-child(3) { margin-top: 0; }
+  .edu { padding-bottom: 0; }
+  .edu-card:nth-child(2), .edu-card:nth-child(3) { top: 0; }
 }
 
 /* ---------- Projects ---------- */
@@ -496,25 +498,54 @@ p { margin: 0; }
 .card-body p:last-child { color: var(--text-2); font-size: 15px; }
 .more { margin-top: 40px; text-align: center; }
 
-/* ---------- Clients ---------- */
-.clients { margin-top: 56px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* ---------- Lavori: card orizzontali con pannello del marchio ---------- */
+.clients { margin-top: 56px; display: grid; gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .client {
-  padding: 36px; border-radius: var(--radius);
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
-  display: flex; flex-direction: column; gap: 10px;
-  transition: transform .3s;
+  display: grid; grid-template-columns: 172px minmax(0, 1fr); min-height: 212px;
+  padding: 0; overflow: hidden;
 }
-.client:hover { transform: translateY(-4px); }
-.client h3 { font-size: 26px; }
+/* Pannello colorato con i toni del marchio */
+.client-brand {
+  position: relative; display: grid; place-items: center; overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.28), transparent 55%),
+    linear-gradient(150deg, var(--brand-a), var(--brand-b));
+}
+.client-brand::before {
+  content: ""; position: absolute; inset: -40%;
+  background: radial-gradient(rgba(255,255,255,.22) 1.2px, transparent 1.6px) 0 0 / 14px 14px;
+  -webkit-mask: radial-gradient(circle at 50% 50%, #000 15%, transparent 60%); mask: radial-gradient(circle at 50% 50%, #000 15%, transparent 60%);
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.client:hover .client-brand::before { transform: scale(1.15) rotate(8deg); }
 .client-logo {
-  height: 96px; border-radius: 18px; background: #fff;
-  display: grid; place-items: center; padding: 12px 20px; margin-bottom: 8px;
-  border: 1px solid rgba(0,0,0,.06);
+  position: relative; width: 92px; height: 92px; border-radius: 26px; overflow: hidden;
+  display: grid; place-items: center; padding: 12px; background: #fff;
+  box-shadow: 0 18px 34px -16px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.5);
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
 }
-.client-logo img { max-height: 72px; max-width: 100%; object-fit: contain; }
-.client-logo .logo-square { height: 64px; border-radius: 14px; }
-.client p { color: var(--text-2); flex: 1; }
+.client-logo img { width: 100%; height: 100%; object-fit: contain; }
+.client-logo-full { padding: 0; background: none; box-shadow: 0 18px 34px -16px rgba(0,0,0,.55); }
+.client-logo-zoom img { transform: scale(1.22); }
+.client:hover .client-logo { transform: translateY(-4px) rotate(-6deg) scale(1.05); }
+.client-body { display: flex; flex-direction: column; gap: 10px; padding: 30px 32px; }
+.client h3 { font-size: 24px; line-height: 1.2; letter-spacing: -0.02em; }
+.client-body p { color: var(--text-2); flex: 1; line-height: 1.5; }
+.client-body .link-arrow { align-self: flex-start; }
+
+@media (max-width: 1060px) {
+  .client { grid-template-columns: 136px minmax(0, 1fr); }
+  .client-logo { width: 78px; height: 78px; border-radius: 22px; }
+  .client-body { padding: 26px 24px; }
+}
+@media (max-width: 760px) {
+  .clients { grid-template-columns: 1fr; gap: 16px; }
+  .client { grid-template-columns: 112px minmax(0, 1fr); min-height: 0; }
+  .client-logo { width: 68px; height: 68px; border-radius: 20px; padding: 9px; }
+  .client-body { padding: 20px 18px; gap: 8px; }
+  .client h3 { font-size: 20px; }
+  .client-body p { font-size: 15px; }
+}
 
 /* ---------- Lang switch ---------- */
 .lang-switch {
@@ -711,7 +742,6 @@ html { scroll-padding-top: 84px; }
 /* Card progetti e collaborazioni */
 .card-media { position: relative; }
 .card-media::after { content: ""; position: absolute; inset: auto 0 0 0; height: 40%; background: linear-gradient(transparent, rgba(255,255,255,.12)); }
-.client-logo { background: rgba(255,255,255,.92); border-color: rgba(255,255,255,.8); }
 
 .footer { background: none; }
 
@@ -880,7 +910,7 @@ html { scroll-padding-top: 84px; }
 @keyframes fz-screen { 50% { opacity: .4; } }
 .fz-shine {
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  -webkit-mask: url(assets/flipper.png) center / 100% 100% no-repeat; mask: url(assets/flipper.png) center / 100% 100% no-repeat;
+  -webkit-mask: url(assets/flipper.webp) center / 100% 100% no-repeat; mask: url(assets/flipper.webp) center / 100% 100% no-repeat;
   opacity: calc(var(--p2) * (1 - var(--p2)) * 4);
 }
 .fz-shine::before {
@@ -1066,3 +1096,16 @@ html { scroll-padding-top: 84px; }
   .fz-companion { padding: 10px 14px; }
   .fz-companion-text { display: none; }
 }
+
+
+/* Lenis gestisce lo scroll fluido: niente smooth nativo in parallelo */
+html.lenis { scroll-behavior: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo, .client-brand::before { transition: none; }
+  .client:hover .client-logo, .client:hover .client-brand::before { transform: none; }
+}
+
+/* Il testo "fantasma" animato da GSAP non deve allargare la pagina su mobile.
+   clip (non hidden) non crea un contenitore di scroll, quindi lo sticky di Flipper e Contatti resta intatto */
+.section { overflow-x: clip; }
