@@ -1229,3 +1229,96 @@ html.lenis { scroll-behavior: auto; }
   .skill-group li, .cert-badge { transition: none; }
   .skill-group li:hover, .cert:hover .cert-badge { transform: none; }
 }
+
+/* ---------- Altri progetti: card orizzontali in 2 colonne ---------- */
+.projects.projects-after { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.projects-after .card {
+  flex: none; min-width: 0;
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); min-height: 212px;
+}
+.projects-after .card-media { aspect-ratio: auto; height: 100%; }
+.projects-after .app-icon { width: 84px; height: 84px; border-radius: 22px; }
+.projects-after .app-icon-pad { padding: 7px; }
+.projects-after .card:hover .app-icon { transform: scale(1.06) rotate(-6deg); }
+.projects-after .card-body { display: flex; flex-direction: column; padding: 24px 26px; }
+.projects-after .card h3 { font-size: 22px; line-height: 1.2; margin: 6px 0 8px; }
+.projects-after .card-body > p:not(.card-tag) {
+  color: var(--text-2); font-size: 15px; line-height: 1.5;
+}
+.card-go {
+  margin-top: auto; padding-top: 14px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 600; color: var(--accent);
+}
+.card-go svg {
+  width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.card:hover .card-go svg { transform: translate(3px, -3px); }
+
+@media (max-width: 900px) {
+  .projects.projects-after { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .projects-after .card { grid-template-columns: 104px minmax(0, 1fr); min-height: 0; }
+  .projects-after .app-icon { width: 64px; height: 64px; border-radius: 18px; }
+  .projects-after .card-body { padding: 18px 18px 20px; }
+  .projects-after .card h3 { font-size: 19px; }
+  .projects-after .card-body > p:not(.card-tag) { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-go svg { transition: none; }
+  .card:hover .card-go svg, .projects-after .card:hover .app-icon { transform: none; }
+}
+
+/* ---------- Altri progetti: loghi protagonisti su card a tutta tinta ---------- */
+.projects.projects-after { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+
+.projects-after .card {
+  display: flex; flex-direction: column; grid-template-columns: none;
+  min-height: 0; padding: 248px 14px 14px; border-color: rgba(255,255,255,.3);
+  overflow: hidden;
+}
+/* Il colore del progetto riempie tutta la card */
+.projects-after .card > .card-media {
+  position: absolute; inset: 0; z-index: 0; height: auto; aspect-ratio: auto;
+  display: block;
+}
+.projects-after .card > .card-media::after {
+  content: ""; position: absolute; inset: 0; height: auto;
+  background: radial-gradient(60% 45% at 50% 30%, rgba(255,255,255,.35), transparent 70%);
+}
+/* Logo grande che fluttua, con riflesso */
+.projects-after .app-icon {
+  position: absolute; left: 50%; top: 44px; z-index: 1;
+  width: 136px; height: 136px; border-radius: 34px; margin-left: -68px;
+  box-shadow: 0 26px 50px -18px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.4);
+  -webkit-box-reflect: below 8px linear-gradient(transparent 62%, rgba(255,255,255,.22));
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.projects-after .app-icon-pad { padding: 11px; }
+.projects-after .card:hover .app-icon { transform: translateY(-8px) rotate(-5deg) scale(1.05); }
+
+/* Pannello di vetro scuro con i testi */
+.projects-after .card-body {
+  flex: 1; margin-top: 0; padding: 20px 20px 18px; border-radius: calc(var(--radius) - 10px);
+  background: rgba(14, 14, 24, .46); border: 1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%);
+  color: #fff;
+}
+.projects-after .card-tag { color: rgba(255,255,255,.72); }
+.projects-after .card h3 { color: #fff; font-size: 21px; }
+.projects-after .card-body > p:not(.card-tag) { color: rgba(255,255,255,.86); font-size: 14.5px; }
+.projects-after .card-go { color: #fff; }
+
+@media (max-width: 1060px) {
+  .projects.projects-after { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .projects.projects-after { grid-template-columns: 1fr; }
+  .projects-after .card { grid-template-columns: none; padding-top: 196px; }
+  .projects-after .app-icon { width: 108px; height: 108px; border-radius: 28px; margin-left: -54px; top: 34px; }
+  .projects-after .card h3 { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-after .card:hover .app-icon { transform: none; }
+}

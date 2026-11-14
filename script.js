@@ -93,6 +93,8 @@ const en = {
   'projects.others': 'More projects.',
   'projects.othersLead': 'Compilers, penetration testing, project management, web and dApps.',
   'projects.more': 'All repositories on GitHub',
+  'p.go.repo': 'Code on GitHub',
+  'p.go.doc': 'Read the document',
   'p.spinoff': 'Proof of Concept for the redesign of the University of Salerno spin-off page, with search by sector and incubation status.',
   'fz.eyebrow': 'Featured · Embedded Security',
   'fz.title': 'Flipper Zero in your browser.',
