@@ -60,10 +60,10 @@
 
     // 1. Hero: titolo che sale riga per riga da una maschera, poi il resto
     const heroSplit = SplitText.create(heroTitle, { type: 'lines', mask: 'lines', linesClass: 'gs-line' });
-    gsap.timeline({ defaults: { ease }, delay: 0.15 })
-      .from(heroSplit.lines, { yPercent: 110, duration: 1.1, stagger: 0.12 })
-      .from(heroRest, { y: 28, opacity: 0, duration: 0.9, stagger: 0.1 }, '-=0.7')
-      .from(portrait, { scale: 0.82, opacity: 0, filter: 'blur(12px)', duration: 1.2, ease: 'expo.out' }, '-=0.6')
+    gsap.timeline({ defaults: { ease } })
+      .from(heroSplit.lines, { yPercent: 110, duration: 0.75, stagger: 0.08 })
+      .from(heroRest, { y: 20, opacity: 0, duration: 0.55, stagger: 0.06 }, '-=0.5')
+      .from(portrait, { scale: 0.88, opacity: 0, filter: 'blur(10px)', duration: 0.8, ease: 'expo.out' }, '-=0.45')
       .add(() => { heroRest.forEach(release); heroSplit.revert(); });
 
     // 2. Hero: allo scroll il ritratto sale e si rimpicciolisce, il titolo sfuma
@@ -76,17 +76,37 @@
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 },
     });
 
+    // Comparse guidate da IntersectionObserver: reagisce subito (anche quando il browser
+    // ripristina la posizione di scroll al ricaricamento) senza aspettare il load della pagina.
+    // Quello che è già sullo schermo all'avvio non viene mai nascosto.
+    const pending = new Map();           // elemento -> funzione che lo mostra (instant, delay)
+    const vh = innerHeight;
+    const status = el => { const r = el.getBoundingClientRect(); return r.top >= vh ? 'below' : r.bottom <= 0 ? 'above' : 'visible'; };
+    const io = new IntersectionObserver(entries => {
+      let i = 0;
+      entries.forEach(e => {
+        const show = pending.get(e.target);
+        if (!show) return;
+        if (e.isIntersecting) show(false, Math.min(i++ * 0.05, 0.25));
+        else if (e.boundingClientRect.bottom <= 0) show(true, 0);   // già superato con un salto: subito visibile
+        else return;
+        pending.delete(e.target);
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -5% 0px' });
+
     // 3. Titoli di sezione: lettere che salgono in cascata
     const titleSplits = [];
     secTitles.forEach(title => {
+      if (status(title) !== 'below') return;          // già visibile: resta com'è
       const split = SplitText.create(title, { type: 'chars', mask: 'chars' });
-      gsap.from(split.chars, {
-        yPercent: 105, duration: 0.8, ease, stagger: 0.035,
-        scrollTrigger: { trigger: title, start: 'top 88%', once: true },
-        // Se nel frattempo è cambiata lingua il testo è già stato sostituito
-        onComplete: () => { if (split.chars[0]?.isConnected) split.revert(); },
-      });
       titleSplits.push([title, split]);
+      gsap.set(split.chars, { yPercent: 105 });
+      // Se nel frattempo è cambiata lingua il testo è già stato sostituito
+      const done = () => { if (split.chars[0]?.isConnected) split.revert(); };
+      pending.set(title, (instant, delay) => instant ? done()
+        : gsap.to(split.chars, { yPercent: 0, duration: 0.55, ease, stagger: 0.025, delay, onComplete: done }));
+      io.observe(title);
     });
     // Cambio lingua: il testo del titolo viene sostituito, quindi l'etichetta
     // per i lettori di schermo aggiunta da SplitText (nella lingua precedente) va tolta
@@ -105,20 +125,19 @@
       });
     });
 
-    // 5. Reveal generico: gli elementi vicini entrano in cascata
+    // 5. Comparse generiche: brevi, con una piccola cascata tra elementi vicini
     const items = [...document.querySelectorAll('.reveal')].filter(el => !special.has(el));
-    items.forEach(take);
-    gsap.set(items, { opacity: 0, y: 40 });
-    ScrollTrigger.batch(items, {
-      start: 'top 90%',
-      once: true,
-      onEnter: batch => gsap.to(batch, {
-        opacity: 1, y: 0, duration: 0.9, ease, stagger: 0.09, overwrite: true,
-        onComplete: () => batch.forEach(release),
-      }),
+    items.forEach(el => {
+      take(el);
+      if (status(el) !== 'below') { release(el); return; }   // già sullo schermo o sopra: nessuna attesa
+      gsap.set(el, { opacity: 0, y: 24 });
+      pending.set(el, (instant, delay) => instant ? release(el)
+        : gsap.to(el, { opacity: 1, y: 0, duration: 0.55, ease, delay, overwrite: true, onComplete: () => release(el) }));
+      io.observe(el);
     });
 
     return () => {
+      io.disconnect();
       heroSplit.revert();
       langButtons.forEach(b => b.removeEventListener('click', dropStaleLabels));
     };

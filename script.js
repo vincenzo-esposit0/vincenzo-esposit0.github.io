@@ -38,7 +38,11 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12 });
 // Con GSAP attivo le comparse sono gestite da motion.js
-if (!window.gsap) document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+if (!window.gsap) document.querySelectorAll('.reveal').forEach(el => {
+  // Senza GSAP: si nasconde solo ciò che è sotto lo schermo
+  if (el.getBoundingClientRect().top >= innerHeight) el.classList.add('reveal-wait');
+  revealObserver.observe(el);
+});
 
 document.getElementById('year').textContent = new Date().getFullYear();
 

@@ -625,13 +625,15 @@ p { margin: 0; }
 .footer a:hover { text-decoration: underline; }
 
 /* ---------- Reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
-.reveal.visible { opacity: 1; transform: none; }
+/* Prima del JavaScript si nasconde solo l'intro della hero: il resto della pagina è visibile subito
+   e viene nascosto via JS solo se è sotto lo schermo (nessuna attesa al ricaricamento) */
+.reveal { transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1); }
+.hero .reveal:not(.visible), .reveal.reveal-wait:not(.visible) { opacity: 0; transform: translateY(24px); }
 .no-js .reveal { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .hero .reveal, .reveal.reveal-wait { opacity: 1 !important; transform: none !important; transition: none; }
   .card, .client, .btn { transition: none; }
   .brand .v-gray, .brand .v-blue, .brand .brand-name { animation: none !important; }
   .brand .v-gray { stroke-dashoffset: 0; fill-opacity: 1; stroke-opacity: 0; }
